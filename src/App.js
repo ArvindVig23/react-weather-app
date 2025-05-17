@@ -1,25 +1,21 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState } from "react";
+import GlobalStyles from "./styles/GlobalStyles";
+import SearchBar from "./components/SearchBar";
+import UnitToggle from "./components/UnitToggle";
 
-function App() {
+export default function App() {
+  const [units, setUnits] = useState("metric");
+
+  // placeholder until API is wired
+  const handleSearch = (city) => {
+    console.log("Searching weather for:", city, "with units:", units);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyles />
+      <UnitToggle units={units} onChange={setUnits} />
+      <SearchBar onSearch={handleSearch} />
+    </>
   );
 }
-
-export default App;
